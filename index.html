@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3DCD58">
+  <title>Grenoble Event Guide | Power Products Europe Collaboration Days</title>
+  <style>
+    :root {
+      --se-green: #3DCD58;
+      --se-green-dark: #008A16;
+      --ink: #111827;
+      --muted: #667085;
+      --soft: #F6F7F9;
+      --card: #FFFFFF;
+      --line: #E6E8EC;
+      --dark: #121212;
+      --shadow: 0 18px 45px rgba(17, 24, 39, 0.09);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(61, 205, 88, 0.18), transparent 34rem),
+        linear-gradient(180deg, #FFFFFF 0%, #F8FAFB 56%, #FFFFFF 100%);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: .75rem 1rem;
+      background: var(--dark);
+      color: white;
+      border-radius: 999px;
+      z-index: 99;
+    }
+
+    .page {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(18,18,18,0.96), rgba(18,18,18,0.82)),
+        radial-gradient(circle at 85% 10%, rgba(61,205,88,0.7), transparent 26rem);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      min-height: 420px;
+      display: grid;
+      align-items: end;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -30% -22% auto auto;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,205,88,0.55), rgba(61,205,88,0.08) 55%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 48px solid rgba(61,205,88,0.22);
+      pointer-events: none;
+    }
+
+    .brand-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 92px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: .01em;
+    }
+
+    .brand-mark {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--se-green);
+      box-shadow: 0 0 0 6px rgba(61,205,88,0.18);
+    }
+
+    .update-pill {
+      position: relative;
+      z-index: 1;
+      max-width: 160px;
+      text-align: right;
+      font-size: .78rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 770px;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin: 0 0 14px;
+      color: var(--se-green);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 9vw, 5.3rem);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 640px;
+      color: rgba(255,255,255,0.84);
+      font-size: clamp(1rem, 2.6vw, 1.24rem);
+    }
+
+    .hero-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 14px -18px 0;
+      padding: 12px 18px;
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid rgba(230,232,236,0.75);
+      backdrop-filter: blur(18px);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .quick-nav-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    .quick-link, .tab-button, .primary-button, .secondary-button {
+      appearance: none;
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 800;
+      font-size: .92rem;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .quick-link {
+      background: var(--soft);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .quick-link:hover, .tab-button:hover, .primary-button:hover, .secondary-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 32px rgba(17,24,39,0.04);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-eyebrow {
+      margin: 0 0 5px;
+      color: var(--se-green-dark);
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 4.5vw, 2.25rem);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+    }
+
+    .section-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .status-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .status-card.highlight {
+      background: linear-gradient(135deg, rgba(61,205,88,0.15), rgba(61,205,88,0.04));
+      border-color: rgba(61,205,88,0.45);
+    }
+
+    .status-label {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: white;
+      color: var(--se-green-dark);
+      border: 1px solid rgba(61,205,88,0.38);
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 900;
+    }
+
+    .status-title {
+      margin: 12px 0 8px;
+      font-size: 1.18rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .status-meta {
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .primary-button {
+      color: #0A2610;
+      background: var(--se-green);
+      box-shadow: 0 12px 28px rgba(61,205,88,0.23);
+    }
+
+    .secondary-button {
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 6px 0 22px;
+    }
+
+    .tab-button {
+      color: var(--ink);
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .tab-button[aria-selected="true"] {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+      box-shadow: 0 12px 28px rgba(17,24,39,0.16);
+    }
+
+    .day-panel {
+      display: block;
+    }
+
+    .day-panel[hidden] {
+      display: none;
+    }
+
+    .day-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 14px;
+    }
+
+    .day-heading h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      letter-spacing: -.02em;
+    }
+
+    .date-pill {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(61,205,88,0.12);
+      color: #0B6B1B;
+      font-weight: 800;
+      font-size: .82rem;
+    }
+
+    .agenda-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .agenda-card {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 14px;
+      align-items: stretch;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(17,24,39,0.035);
+      scroll-margin-top: 100px;
+    }
+
+    .agenda-card.is-current {
+      border-color: rgba(61,205,88,0.85);
+      box-shadow: 0 15px 35px rgba(61,205,88,0.17);
+    }
+
+    .agenda-card.is-next {
+      border-color: rgba(17,24,39,0.23);
+    }
+
+    .agenda-card.type-break,
+    .agenda-card.type-lunch,
+    .agenda-card.type-dinner {
+      background: #FAFBFC;
+    }
+
+    .agenda-card.type-workshop {
+      background: linear-gradient(135deg, #FFFFFF, rgba(61,205,88,0.055));
+    }
+
+    .time-block {
+      padding: 12px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--soft);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 88px;
+    }
+
+    .agenda-card.is-current .time-block {
+      background: rgba(61,205,88,0.17);
+    }
+
+    .time {
+      display: block;
+      font-size: 1.12rem;
+      font-weight: 950;
+      letter-spacing: -.02em;
+    }
+
+    .duration {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .card-content {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-topline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .category-pill {
+      display: inline-flex;
+      width: max-content;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #F0F2F4;
+      color: #475467;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .type-workshop .category-pill {
+      color: #0B6B1B;
+      background: rgba(61,205,88,0.14);
+    }
+
+    .type-demo .category-pill {
+      color: #0F4C81;
+      background: rgba(15,76,129,0.10);
+    }
+
+    .type-lunch .category-pill,
+    .type-dinner .category-pill {
+      color: #7A4A00;
+      background: rgba(245,158,11,0.13);
+    }
+
+    .live-pill {
+      display: none;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: #0A2610;
+      background: var(--se-green);
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .agenda-card.is-current .live-pill,
+    .agenda-card.is-next .live-pill {
+      display: inline-flex;
+    }
+
+    .agenda-card h3 {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.25;
+      letter-spacing: -.015em;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta-icon {
+      filter: grayscale(1);
+      opacity: .75;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .info-card {
+      padding: 17px;
+      border-radius: var(--radius-md);
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+    }
+
+    .contact-role {
+      margin: 0 0 8px;
+      color: var(--se-green-dark);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 900;
+    }
+
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .contact-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 28px 12px 38px;
+      font-size: .9rem;
+    }
+
+    .fine-print {
+      margin-top: 10px;
+      color: #8A94A3;
+      font-size: .84rem;
+    }
+
+    @media (min-width: 720px) {
+      .page {
+        padding: 26px;
+      }
+
+      .hero {
+        padding: 34px;
+        min-height: 470px;
+      }
+
+      .quick-nav {
+        margin-left: -26px;
+        margin-right: -26px;
+        padding-left: 26px;
+        padding-right: 26px;
+      }
+
+      .section {
+        padding: 30px;
+      }
+
+      .status-grid {
+        grid-template-columns: 1.2fr .8fr;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .agenda-card {
+        grid-template-columns: 96px 1fr;
+        padding: 16px;
+      }
+
+      .time-block {
+        min-height: 94px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        transition: none !important;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .hero, .quick-nav, .action-row, .tab-bar {
+        display: none;
+      }
+      .section {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .day-panel[hidden] {
+        display: block;
+      }
+      .agenda-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#agenda">Skip to agenda</a>
+  <main class="page">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="brand-row">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Schneider Electric</div>
+        <div class="update-pill">Last updated<br>18 May 2026</div>
+      </div>
+      <div class="hero-copy">
+        <p class="kicker">Power Products Europe Collaboration Days</p>
+        <h1 id="page-title">Grenoble Event Guide</h1>
+        <p class="subtitle">Your event, in your pocket. Check the live agenda, locations and useful information whenever you need it.</p>
+        <div class="hero-details" aria-label="Event details">
+          <span class="hero-chip">📅 25–28 May 2026</span>
+          <span class="hero-chip">📍 Grenoble</span>
+          <span class="hero-chip">🕘 Times in local Grenoble time</span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="quick-nav" aria-label="Quick access">
+      <div class="quick-nav-inner">
+        <a class="quick-link" href="#today">Today</a>
+        <a class="quick-link" href="#agenda" data-switch-tab="day1">Day 1</a>
+        <a class="quick-link" href="#agenda" data-switch-tab="day2">Day 2</a>
+        <a class="quick-link" href="#locations">Locations</a>
+        <a class="quick-link" href="#contacts">Contacts</a>
+      </div>
+    </nav>
+
+    <section class="section" id="today" aria-labelledby="today-title">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">At a glance</p>
+          <h2 id="today-title">Today’s agenda</h2>
+          <p class="section-note">A quick view of what is happening now and what comes next during the event.</p>
+        </div>
+      </div>
+
+      <div class="status-grid">
+        <div class="status-card highlight" id="current-card">
+          <span class="status-label">Now</span>
+          <div class="status-title">Event guide ready</div>
+          <div class="status-meta">Open this page during the event to see the current session.</div>
+        </div>
+        <div class="status-card" id="next-card">
+          <span class="status-label">Next</span>
+          <div class="status-title">Day 1 starts at 08:30</div>
+          <div class="status-meta">Welcome and event opening · Anchorage</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a class="primary-button" href="#agenda">Open agenda</a>
+        <a class="secondary-button" href="#locations">See locations</a>
+        <a class="secondary-button" href="#contacts">Need help?</a>
+      </div>
+      <p class="fine-print">Tip: save this page to your phone home screen for quick access during the event.</p>
+    </section>
+
+    <section class="section" id="agenda" aria-labelledby="agenda-title">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Agenda</p>
+          <h2 id="agenda-title">Explore by day</h2>
+          <p class="section-note">Participant-facing agenda cards with only the information you need: time, session, facilitators and location.</p>
+        </div>
+      </div>
+
+      <div class="tab-bar" role="tablist" aria-label="Agenda days">
+        <button class="tab-button" role="tab" id="tab-day1" aria-selected="true" aria-controls="panel-day1" data-tab="day1">Day 1 · Tue 26 May</button>
+        <button class="tab-button" role="tab" id="tab-day2" aria-selected="false" aria-controls="panel-day2" data-tab="day2">Day 2 · Wed 27 May</button>
+      </div>
+
+      <section class="day-panel" id="panel-day1" role="tabpanel" aria-labelledby="tab-day1" data-panel="day1">
+        <div class="day-heading">
+          <h3>Day 1 — Small & Medium Buildings + Large Buildings</h3>
+          <span class="date-pill">Tuesday, 26 May 2026</span>
+        </div>
+        <div class="agenda-list">
+          
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T08:30:00" data-end="2026-05-26T08:45:00">
+        <div class="time-block">
+          <span class="time">08:30</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Welcome and event opening</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Matteo &amp; Ganzou</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T08:45:00" data-end="2026-05-26T09:05:00">
+        <div class="time-block">
+          <span class="time">08:45</span>
+          <span class="duration">20 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Market saturation: ABCD introduction</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Ganzou &amp; Katja</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T09:05:00" data-end="2026-05-26T09:20:00">
+        <div class="time-block">
+          <span class="time">09:05</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Small &amp; Medium Buildings: insights and trends</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Nicolas</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T09:20:00" data-end="2026-05-26T09:50:00">
+        <div class="time-block">
+          <span class="time">09:20</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Small &amp; Medium Buildings + Large Buildings roadmap</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>François &amp; Sébastien</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day1" data-start="2026-05-26T09:50:00" data-end="2026-05-26T10:20:00">
+        <div class="time-block">
+          <span class="time">09:50</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Coffee break &amp; demos — Space9, Easy9, EV pre-wired</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Marie, Cyrill D., Gregory &amp; Lucas</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T10:20:00" data-end="2026-05-26T10:40:00">
+        <div class="time-block">
+          <span class="time">10:20</span>
+          <span class="duration">20 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Diffuse &amp; Riser offers</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Katja, Yulia &amp; Petre</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-demo" data-day="day1" data-start="2026-05-26T10:40:00" data-end="2026-05-26T11:00:00">
+        <div class="time-block">
+          <span class="time">10:40</span>
+          <span class="duration">20 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Demo / rotation</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>eDesign + EcoSet Config: introduction &amp; demo</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Howard</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day1" data-start="2026-05-26T11:00:00" data-end="2026-05-26T11:15:00">
+        <div class="time-block">
+          <span class="time">11:00</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Workshop introduction: France Small &amp; Medium Buildings tertiary fight plan</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Thomas Peregrin</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day1" data-start="2026-05-26T11:15:00" data-end="2026-05-26T12:30:00">
+        <div class="time-block">
+          <span class="time">11:15</span>
+          <span class="duration">75 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Go-to-market workshops: Diffuse projects</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>G1: Petre Butu &amp; Katja; G2: Kat Buzelatto &amp; Lucas</span><span class="meta-item"><span class="meta-icon">📍</span>2 rooms</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-lunch" data-day="day1" data-start="2026-05-26T12:30:00" data-end="2026-05-26T13:10:00">
+        <div class="time-block">
+          <span class="time">12:30</span>
+          <span class="duration">40 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Lunch</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Lunch</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Showroom</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T13:10:00" data-end="2026-05-26T13:35:00">
+        <div class="time-block">
+          <span class="time">13:10</span>
+          <span class="duration">25 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Large Buildings: LV scope</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Nathalie Fustinoni &amp; Sevim</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T13:35:00" data-end="2026-05-26T14:20:00">
+        <div class="time-block">
+          <span class="time">13:35</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Large Buildings: NEL impact</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Nicola Pasto &amp; Dheeraj</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T14:20:00" data-end="2026-05-26T14:50:00">
+        <div class="time-block">
+          <span class="time">14:20</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Software overview &amp; prescription: EcoSet Design</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Hao Jiang &amp; Katja</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day1" data-start="2026-05-26T14:50:00" data-end="2026-05-26T15:05:00">
+        <div class="time-block">
+          <span class="time">14:50</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Break</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-demo" data-day="day1" data-start="2026-05-26T15:05:00" data-end="2026-05-26T15:50:00">
+        <div class="time-block">
+          <span class="time">15:05</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Demo / rotation</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Services &amp; Innovation Lab: rotation 1</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Katja &amp; Daniel C. &amp; Vino demo</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage / Lab</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day1" data-start="2026-05-26T15:50:00" data-end="2026-05-26T16:05:00">
+        <div class="time-block">
+          <span class="time">15:50</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Break &amp; group transition</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-demo" data-day="day1" data-start="2026-05-26T16:05:00" data-end="2026-05-26T16:50:00">
+        <div class="time-block">
+          <span class="time">16:05</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Demo / rotation</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Services &amp; Innovation Lab: rotation 2</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Katja &amp; Daniel C. &amp; Vino demo</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage / Lab</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day1" data-start="2026-05-26T16:50:00" data-end="2026-05-26T17:20:00">
+        <div class="time-block">
+          <span class="time">16:50</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Smartblock</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Ma Sitao</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day1" data-start="2026-05-26T17:20:00" data-end="2026-05-26T17:50:00">
+        <div class="time-block">
+          <span class="time">17:20</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Workshop feedback sharing and closing</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Sevim &amp; Ganzou</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-dinner" data-day="day1" data-start="2026-05-26T17:50:00" data-end="2026-05-26T19:20:00">
+        <div class="time-block">
+          <span class="time">17:50</span>
+          
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Dinner</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Free time &amp; departure to dinner</h3>
+          
+        </div>
+      </article>
+        </div>
+      </section>
+
+      <section class="day-panel" id="panel-day2" role="tabpanel" aria-labelledby="tab-day2" data-panel="day2" hidden>
+        <div class="day-heading">
+          <h3>Day 2 — Critical Buildings + Utilities + Pricing & Grey Market</h3>
+          <span class="date-pill">Wednesday, 27 May 2026</span>
+        </div>
+        <div class="agenda-list">
+          
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T08:30:00" data-end="2026-05-27T09:15:00">
+        <div class="time-block">
+          <span class="time">08:30</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Market trends and challenges: Data Center focus</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Sevim &amp; Sophie Rota</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T09:15:00" data-end="2026-05-27T10:15:00">
+        <div class="time-block">
+          <span class="time">09:15</span>
+          <span class="duration">60 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Data Center focus: what we are doing today</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Seb Cruz Mermy &amp; Daniel Radu</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day2" data-start="2026-05-27T10:15:00" data-end="2026-05-27T10:30:00">
+        <div class="time-block">
+          <span class="time">10:15</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Coffee break</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T10:30:00" data-end="2026-05-27T11:15:00">
+        <div class="time-block">
+          <span class="time">10:30</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Go-to-market evolution: Power Train Program &amp; Busway Specialisation</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Katja &amp; Daniel C.</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day2" data-start="2026-05-27T11:15:00" data-end="2026-05-27T12:00:00">
+        <div class="time-block">
+          <span class="time">11:15</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Data Center Innovation &amp; Workshop: rotation 1</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Workshop: Sevim; Demo: Vino</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage / Lab</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day2" data-start="2026-05-27T12:00:00" data-end="2026-05-27T12:15:00">
+        <div class="time-block">
+          <span class="time">12:00</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Coffee break &amp; group transition</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day2" data-start="2026-05-27T12:15:00" data-end="2026-05-27T13:00:00">
+        <div class="time-block">
+          <span class="time">12:15</span>
+          <span class="duration">45 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Data Center Innovation &amp; Workshop: rotation 2</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Workshop: Sevim; Demo: Mariya, Vino, Damian &amp; Chandru</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage / Lab</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-lunch" data-day="day2" data-start="2026-05-27T13:00:00" data-end="2026-05-27T14:00:00">
+        <div class="time-block">
+          <span class="time">13:00</span>
+          <span class="duration">60 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Lunch</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Lunch</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Showroom</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day2" data-start="2026-05-27T14:00:00" data-end="2026-05-27T14:30:00">
+        <div class="time-block">
+          <span class="time">14:00</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Workshop output sharing</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Group presentations</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T14:30:00" data-end="2026-05-27T15:00:00">
+        <div class="time-block">
+          <span class="time">14:30</span>
+          <span class="duration">30 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>NEL Utility: BESS, solar &amp; EV market potential</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Omar &amp; Dheeraj</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T15:00:00" data-end="2026-05-27T15:15:00">
+        <div class="time-block">
+          <span class="time">15:00</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Existing European solutions: commercialized offers &amp; gaps</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Omar &amp; Dheeraj</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day2" data-start="2026-05-27T15:15:00" data-end="2026-05-27T15:30:00">
+        <div class="time-block">
+          <span class="time">15:15</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Coffee break</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-session" data-day="day2" data-start="2026-05-27T15:30:00" data-end="2026-05-27T15:45:00">
+        <div class="time-block">
+          <span class="time">15:30</span>
+          <span class="duration">15 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Session</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Field reality check: feedback and solution input</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Omar &amp; Dheeraj</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day2" data-start="2026-05-27T15:45:00" data-end="2026-05-27T16:45:00">
+        <div class="time-block">
+          <span class="time">15:45</span>
+          <span class="duration">60 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Workshop: ambition, action plan &amp; discussion</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Omar &amp; Dheeraj</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-workshop" data-day="day2" data-start="2026-05-27T16:45:00" data-end="2026-05-27T18:15:00">
+        <div class="time-block">
+          <span class="time">16:45</span>
+          <span class="duration">90 min</span>
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Workshop</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Pricing workshop: grey market</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">👤</span>Maxime Chapel &amp; Paola</span><span class="meta-item"><span class="meta-icon">📍</span>Anchorage</span></div>
+        </div>
+      </article>
+
+      <article class="agenda-card type-break" data-day="day2" data-start="2026-05-27T18:15:00" data-end="2026-05-27T19:30:00">
+        <div class="time-block">
+          <span class="time">18:15</span>
+          
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Break / transition</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>End of workshop</h3>
+          
+        </div>
+      </article>
+
+      <article class="agenda-card type-dinner" data-day="day2" data-start="2026-05-27T19:30:00" data-end="2026-05-27T21:00:00">
+        <div class="time-block">
+          <span class="time">19:30</span>
+          
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="category-pill">Dinner</span>
+            <span class="live-pill" aria-live="polite"></span>
+          </div>
+          <h3>Optional dinner</h3>
+          <div class="card-meta"><span class="meta-item"><span class="meta-icon">📍</span>TBC</span></div>
+        </div>
+      </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="section" id="locations" aria-labelledby="locations-title">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Practical information</p>
+          <h2 id="locations-title">Where to go</h2>
+          <p class="section-note">Use this section for venue details, room guidance and logistics updates.</p>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Main meeting room</h3>
+          <p>Anchorage — plenary sessions, workshops and most agenda moments.</p>
+        </div>
+        <div class="info-card">
+          <h3>Lunch & demos</h3>
+          <p>Showroom — lunch area and selected demonstration moments.</p>
+        </div>
+        <div class="info-card">
+          <h3>Innovation rotations</h3>
+          <p>Lab — services, innovation and Data Center demo rotations.</p>
+        </div>
+        <div class="info-card">
+          <h3>Dinner details</h3>
+          <p>Optional dinner on Wednesday is currently marked as TBC. Add final venue and departure timing here.</p>
+        </div>
+        <div class="info-card">
+          <h3>Wi‑Fi</h3>
+          <p>Add network name and password here once confirmed.</p>
+        </div>
+        <div class="info-card">
+          <h3>Transport & logistics</h3>
+          <p>Add shuttle, taxi, parking or meeting point details here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Contacts</p>
+          <h2 id="contacts-title">Need something?</h2>
+          <p class="section-note">Add the final contacts before publishing the guide.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p class="contact-role">Event coordination</p>
+          <h3>Add name here</h3>
+          <p>Phone / Teams / email</p>
+        </div>
+        <div class="contact-card">
+          <p class="contact-role">Logistics support</p>
+          <h3>Add name here</h3>
+          <p>Phone / Teams / email</p>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a class="primary-button" href="#" aria-label="Feedback form placeholder">Feedback form</a>
+        <a class="secondary-button" href="#today">Back to top</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      This agenda may be updated during the event. Please use this page as the latest reference.
+    </footer>
+  </main>
+
+  <script type="application/json" id="agenda-data">[{"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "08:30", "duration": "15 min", "durationMin": 15, "title": "Welcome and event opening", "speakers": "Matteo & Ganzou", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T08:30:00", "endISO": "2026-05-26T08:45:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "08:45", "duration": "20 min", "durationMin": 20, "title": "Market saturation: ABCD introduction", "speakers": "Ganzou & Katja", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T08:45:00", "endISO": "2026-05-26T09:05:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "09:05", "duration": "15 min", "durationMin": 15, "title": "Small & Medium Buildings: insights and trends", "speakers": "Nicolas", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T09:05:00", "endISO": "2026-05-26T09:20:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "09:20", "duration": "30 min", "durationMin": 30, "title": "Small & Medium Buildings + Large Buildings roadmap", "speakers": "François & Sébastien", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T09:20:00", "endISO": "2026-05-26T09:50:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "09:50", "duration": "30 min", "durationMin": 30, "title": "Coffee break & demos — Space9, Easy9, EV pre-wired", "speakers": "Marie, Cyrill D., Gregory & Lucas", "location": "Anchorage", "category": "break", "startISO": "2026-05-26T09:50:00", "endISO": "2026-05-26T10:20:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "10:20", "duration": "20 min", "durationMin": 20, "title": "Diffuse & Riser offers", "speakers": "Katja, Yulia & Petre", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T10:20:00", "endISO": "2026-05-26T10:40:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "10:40", "duration": "20 min", "durationMin": 20, "title": "eDesign + EcoSet Config: introduction & demo", "speakers": "Howard", "location": "Anchorage", "category": "demo", "startISO": "2026-05-26T10:40:00", "endISO": "2026-05-26T11:00:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "11:00", "duration": "15 min", "durationMin": 15, "title": "Workshop introduction: France Small & Medium Buildings tertiary fight plan", "speakers": "Thomas Peregrin", "location": "Anchorage", "category": "workshop", "startISO": "2026-05-26T11:00:00", "endISO": "2026-05-26T11:15:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "11:15", "duration": "75 min", "durationMin": 75, "title": "Go-to-market workshops: Diffuse projects", "speakers": "G1: Petre Butu & Katja; G2: Kat Buzelatto & Lucas", "location": "2 rooms", "category": "workshop", "startISO": "2026-05-26T11:15:00", "endISO": "2026-05-26T12:30:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "12:30", "duration": "40 min", "durationMin": 40, "title": "Lunch", "speakers": "", "location": "Showroom", "category": "lunch", "startISO": "2026-05-26T12:30:00", "endISO": "2026-05-26T13:10:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "13:10", "duration": "25 min", "durationMin": 25, "title": "Large Buildings: LV scope", "speakers": "Nathalie Fustinoni & Sevim", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T13:10:00", "endISO": "2026-05-26T13:35:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "13:35", "duration": "45 min", "durationMin": 45, "title": "Large Buildings: NEL impact", "speakers": "Nicola Pasto & Dheeraj", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T13:35:00", "endISO": "2026-05-26T14:20:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "14:20", "duration": "30 min", "durationMin": 30, "title": "Software overview & prescription: EcoSet Design", "speakers": "Hao Jiang & Katja", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T14:20:00", "endISO": "2026-05-26T14:50:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "14:50", "duration": "15 min", "durationMin": 15, "title": "Break", "speakers": "", "location": "Anchorage", "category": "break", "startISO": "2026-05-26T14:50:00", "endISO": "2026-05-26T15:05:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "15:05", "duration": "45 min", "durationMin": 45, "title": "Services & Innovation Lab: rotation 1", "speakers": "Katja & Daniel C. & Vino demo", "location": "Anchorage / Lab", "category": "demo", "startISO": "2026-05-26T15:05:00", "endISO": "2026-05-26T15:50:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "15:50", "duration": "15 min", "durationMin": 15, "title": "Break & group transition", "speakers": "", "location": "Anchorage", "category": "break", "startISO": "2026-05-26T15:50:00", "endISO": "2026-05-26T16:05:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "16:05", "duration": "45 min", "durationMin": 45, "title": "Services & Innovation Lab: rotation 2", "speakers": "Katja & Daniel C. & Vino demo", "location": "Anchorage / Lab", "category": "demo", "startISO": "2026-05-26T16:05:00", "endISO": "2026-05-26T16:50:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "16:50", "duration": "30 min", "durationMin": 30, "title": "Smartblock", "speakers": "Ma Sitao", "location": "Anchorage", "category": "session", "startISO": "2026-05-26T16:50:00", "endISO": "2026-05-26T17:20:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "17:20", "duration": "30 min", "durationMin": 30, "title": "Workshop feedback sharing and closing", "speakers": "Sevim & Ganzou", "location": "Anchorage", "category": "workshop", "startISO": "2026-05-26T17:20:00", "endISO": "2026-05-26T17:50:00"}, {"day": "day1", "dayLabel": "Day 1", "date": "2026-05-26", "dateLabel": "Tuesday, 26 May 2026", "start": "17:50", "duration": "", "durationMin": null, "title": "Free time & departure to dinner", "speakers": "", "location": "", "category": "dinner", "startISO": "2026-05-26T17:50:00", "endISO": "2026-05-26T19:20:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "08:30", "duration": "45 min", "durationMin": 45, "title": "Market trends and challenges: Data Center focus", "speakers": "Sevim & Sophie Rota", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T08:30:00", "endISO": "2026-05-27T09:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "09:15", "duration": "60 min", "durationMin": 60, "title": "Data Center focus: what we are doing today", "speakers": "Seb Cruz Mermy & Daniel Radu", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T09:15:00", "endISO": "2026-05-27T10:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "10:15", "duration": "15 min", "durationMin": 15, "title": "Coffee break", "speakers": "", "location": "Anchorage", "category": "break", "startISO": "2026-05-27T10:15:00", "endISO": "2026-05-27T10:30:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "10:30", "duration": "45 min", "durationMin": 45, "title": "Go-to-market evolution: Power Train Program & Busway Specialisation", "speakers": "Katja & Daniel C.", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T10:30:00", "endISO": "2026-05-27T11:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "11:15", "duration": "45 min", "durationMin": 45, "title": "Data Center Innovation & Workshop: rotation 1", "speakers": "Workshop: Sevim; Demo: Vino", "location": "Anchorage / Lab", "category": "workshop", "startISO": "2026-05-27T11:15:00", "endISO": "2026-05-27T12:00:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "12:00", "duration": "15 min", "durationMin": 15, "title": "Coffee break & group transition", "speakers": "", "location": "Anchorage", "category": "break", "startISO": "2026-05-27T12:00:00", "endISO": "2026-05-27T12:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "12:15", "duration": "45 min", "durationMin": 45, "title": "Data Center Innovation & Workshop: rotation 2", "speakers": "Workshop: Sevim; Demo: Mariya, Vino, Damian & Chandru", "location": "Anchorage / Lab", "category": "workshop", "startISO": "2026-05-27T12:15:00", "endISO": "2026-05-27T13:00:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "13:00", "duration": "60 min", "durationMin": 60, "title": "Lunch", "speakers": "", "location": "Showroom", "category": "lunch", "startISO": "2026-05-27T13:00:00", "endISO": "2026-05-27T14:00:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "14:00", "duration": "30 min", "durationMin": 30, "title": "Workshop output sharing", "speakers": "Group presentations", "location": "Anchorage", "category": "workshop", "startISO": "2026-05-27T14:00:00", "endISO": "2026-05-27T14:30:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "14:30", "duration": "30 min", "durationMin": 30, "title": "NEL Utility: BESS, solar & EV market potential", "speakers": "Omar & Dheeraj", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T14:30:00", "endISO": "2026-05-27T15:00:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "15:00", "duration": "15 min", "durationMin": 15, "title": "Existing European solutions: commercialized offers & gaps", "speakers": "Omar & Dheeraj", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T15:00:00", "endISO": "2026-05-27T15:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "15:15", "duration": "15 min", "durationMin": 15, "title": "Coffee break", "speakers": "", "location": "Anchorage", "category": "break", "startISO": "2026-05-27T15:15:00", "endISO": "2026-05-27T15:30:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "15:30", "duration": "15 min", "durationMin": 15, "title": "Field reality check: feedback and solution input", "speakers": "Omar & Dheeraj", "location": "Anchorage", "category": "session", "startISO": "2026-05-27T15:30:00", "endISO": "2026-05-27T15:45:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "15:45", "duration": "60 min", "durationMin": 60, "title": "Workshop: ambition, action plan & discussion", "speakers": "Omar & Dheeraj", "location": "Anchorage", "category": "workshop", "startISO": "2026-05-27T15:45:00", "endISO": "2026-05-27T16:45:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "16:45", "duration": "90 min", "durationMin": 90, "title": "Pricing workshop: grey market", "speakers": "Maxime Chapel & Paola", "location": "Anchorage", "category": "workshop", "startISO": "2026-05-27T16:45:00", "endISO": "2026-05-27T18:15:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "18:15", "duration": "", "durationMin": null, "title": "End of workshop", "speakers": "", "location": "", "category": "break", "startISO": "2026-05-27T18:15:00", "endISO": "2026-05-27T19:30:00"}, {"day": "day2", "dayLabel": "Day 2", "date": "2026-05-27", "dateLabel": "Wednesday, 27 May 2026", "start": "19:30", "duration": "", "durationMin": null, "title": "Optional dinner", "speakers": "", "location": "TBC", "category": "dinner", "startISO": "2026-05-27T19:30:00", "endISO": "2026-05-27T21:00:00"}]</script>
+  <script>
+    (function() {
+      const agenda = JSON.parse(document.getElementById('agenda-data').textContent);
+      const tabs = Array.from(document.querySelectorAll('[data-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-panel]'));
+
+      function formatAgendaMeta(item) {
+        const parts = [];
+        if (item.duration) parts.push(item.duration);
+        if (item.location) parts.push(item.location);
+        if (item.speakers) parts.push(item.speakers);
+        return parts.join(' · ');
+      }
+
+      function switchTab(day) {
+        tabs.forEach(tab => {
+          const selected = tab.dataset.tab === day;
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+        panels.forEach(panel => {
+          panel.hidden = panel.dataset.panel !== day;
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+      });
+
+      document.querySelectorAll('[data-switch-tab]').forEach(link => {
+        link.addEventListener('click', () => {
+          switchTab(link.dataset.switchTab);
+        });
+      });
+
+      function getEventStatus(now) {
+        const entries = agenda
+          .map(item => ({
+            ...item,
+            startDate: new Date(item.startISO),
+            endDate: new Date(item.endISO)
+          }))
+          .sort((a, b) => a.startDate - b.startDate);
+
+        const current = entries.find(item => now >= item.startDate && now < item.endDate);
+        const next = entries.find(item => now < item.startDate);
+
+        return { current, next, entries };
+      }
+
+      function updateStatus() {
+        const now = new Date();
+        const { current, next, entries } = getEventStatus(now);
+        const currentCard = document.getElementById('current-card');
+        const nextCard = document.getElementById('next-card');
+
+        document.querySelectorAll('.agenda-card').forEach(card => {
+          card.classList.remove('is-current', 'is-next');
+          const pill = card.querySelector('.live-pill');
+          if (pill) pill.textContent = '';
+        });
+
+        if (current) {
+          currentCard.querySelector('.status-title').textContent = current.title;
+          currentCard.querySelector('.status-meta').textContent = `${current.dayLabel} · ${current.start} · ${formatAgendaMeta(current)}`;
+          switchTab(current.day);
+          const currentEl = document.querySelector(`.agenda-card[data-start="${current.startISO}"]`);
+          if (currentEl) {
+            currentEl.classList.add('is-current');
+            currentEl.querySelector('.live-pill').textContent = 'Now';
+          }
+        } else {
+          const first = entries[0];
+          const last = entries[entries.length - 1];
+          if (now < first.startDate) {
+            currentCard.querySelector('.status-title').textContent = 'Event starts Tuesday, 26 May';
+            currentCard.querySelector('.status-meta').textContent = 'Your first detailed agenda item is Day 1 at 08:30 in Anchorage.';
+          } else if (now > last.endDate) {
+            currentCard.querySelector('.status-title').textContent = 'Event agenda completed';
+            currentCard.querySelector('.status-meta').textContent = 'Thank you for joining the Power Products Europe Collaboration Days.';
+            switchTab('day2');
+          } else {
+            currentCard.querySelector('.status-title').textContent = 'Between sessions';
+            currentCard.querySelector('.status-meta').textContent = 'Check the next card for where to go next.';
+          }
+        }
+
+        if (next) {
+          nextCard.querySelector('.status-title').textContent = next.title;
+          nextCard.querySelector('.status-meta').textContent = `${next.dayLabel} · ${next.start} · ${formatAgendaMeta(next)}`;
+          const nextEl = document.querySelector(`.agenda-card[data-start="${next.startISO}"]`);
+          if (nextEl) {
+            nextEl.classList.add('is-next');
+            nextEl.querySelector('.live-pill').textContent = 'Next';
+          }
+        } else {
+          nextCard.querySelector('.status-title').textContent = 'No further agenda items';
+          nextCard.querySelector('.status-meta').textContent = 'Please check with the event team for any additional updates.';
+        }
+      }
+
+      updateStatus();
+      window.setInterval(updateStatus, 60000);
+    })();
+  </script>
+</body>
+</html>
